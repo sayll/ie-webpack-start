@@ -32,8 +32,8 @@ $ npm install                   # Install project dependencies
 $ npm start                     # Compile and launch
 ```
 
-如果一切顺利,就能正常打开端口:[http://localhost:3000/](http://localhost:3000/)
-
+如果一切顺利,就能正常打开端口:[http://localhost:3000/](http://localhost:3000/) <br />
+测试低版本IE的用户，通过`npm run build`，直接打开打包文件测试。 <br />
 开发过程中，你用得最多的会是`npm start`。
 
 但是这里还有很多其它的处理：
