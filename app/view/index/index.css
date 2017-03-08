@@ -1,0 +1,11 @@
+body {
+  background: #1ba9ba;
+}
+
+#content {
+  padding: 5rem;
+}
+
+.ms-controller{
+  visibility: hidden
+}
