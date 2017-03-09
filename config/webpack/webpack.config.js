@@ -19,7 +19,7 @@ module.exports = (option = {dev: process.env.NODE_ENV === 'development'}) => ((G
       publicPath        : base.cdnPath, //资源文件引用路径
       filename          : Glob.jsBundle,
       crossOriginLoading: false, // 是否允许跨域加载[anonymous,use-credentials,false]
-      chunkFilename     : files.jsPath + '/asyn/[name].js',
+      chunkFilename     : '/async/[name].js',
       sourceMapFilename : '[file].map'
     },
     module : require('./modules/loader')(option.dev),
@@ -96,8 +96,8 @@ module.exports = (option = {dev: process.env.NODE_ENV === 'development'}) => ((G
           globPath: files.viewPath + '/**/*.?(css|pcss|sass|scss|less)',
           pathDir : files.viewPath + '/'
         }, VIEWS),
-        jsBundle  = debug ? path.join(files.jsName, util.format('[name].js')) : path.join(files.jsName, util.format('[name].%s.[chunkhash:8].js', base.version)),
-        cssBundle = debug ? path.join(files.cssName, util.format('[name].css')) : path.join(files.cssName, util.format('[name].%s.[contenthash:8].css', base.version));
+        jsBundle  = debug ? path.join(files.jsName, util.format('[name].js')) : path.join(files.jsName, util.format('[name].[chunkhash:8].js')),
+        cssBundle = debug ? path.join(files.cssName, util.format('[name].css')) : path.join(files.cssName, util.format('[name].[contenthash:8].css'));
     return {
       'fileHtml' : fileHtml,
       'fileJs'   : fileJs,

@@ -3,7 +3,6 @@ const base  = require('../base/base'),
 
 module.exports = (dev) => {
   let Config = {
-    //noParse: /jquery|vue/, // 忽略某些查找的库，提高构建速度
     rules: [
       {
         test: /\.jsx$|\.js$/,
@@ -36,7 +35,16 @@ module.exports = (dev) => {
       {
         test: /\.(jpg|jpeg|png|gif|svg)$/,
         include: [files.imgPath, files.viewPath],
-        use: ['happypack/loader?id=IMAGE']
+        use: [
+          {
+            loader: 'url-loader',
+            query: {
+              limit: 2000,
+              publicPath: '../../',
+              name: 'assets/[name]-[hash:8].[ext]'
+            }
+          }
+        ]
       },
 
       {
@@ -56,63 +64,36 @@ module.exports = (dev) => {
     ]
   };
 
-  /**
-   * css
-   * 区分开发模式和生产模式，方便无刷新样式开发
-   * */
-
-  let cssLoader = {
-    loader: 'css-loader',
-    query: {
-      modules: false,
-      outputStyle: 'expanded',
-      sourceMap: dev,
-      sourceMapContents: dev
-    }
-  };
-
-  function testLoader(test, loader, path) {
-    Config.rules.push({ // 独立CSS文件
-      test: test, // 标准的CSS编译
-      include: path,
-      use: loader ? [
-          'style-loader',
-          cssLoader,
-          loader,
-          'postcss-loader'
-        ] : [
-          'style-loader',
-          cssLoader,
-          'postcss-loader'
-        ]
-    })
-  }
-
-  function Loader(test, loader, path = [files.viewPath, files.cssPath]) {
+  function cssLoader(test, loader, path = [files.viewPath, files.cssPath]) {
     Config.rules.push({ // 独立CSS文件
       test: test, // 标准的CSS编译
       include: path,
       loaders: require('extract-text-webpack-plugin').extract({
         fallback: 'style-loader',
-        use: loader ? [cssLoader, loader, 'postcss-loader'] : [cssLoader, 'postcss-loader']
+        use: loader ? [{
+            loader: 'css-loader',
+            query: {
+              modules: false,
+              outputStyle: 'expanded',
+              sourceMap: dev,
+              sourceMapContents: dev
+            }
+          }, loader, 'postcss-loader'] : [{
+            loader: 'css-loader',
+            query: {
+              modules: false,
+              outputStyle: 'expanded',
+              sourceMap: dev,
+              sourceMapContents: dev
+            }
+          }, 'postcss-loader']
       })
     })
   }
 
-  if (dev) {
-    testLoader(/\.(css|pcss)$/, false, [files.viewPath]);
-    testLoader(/\.(sass|scss)$/, 'sass-loader', [files.viewPath]);
-    testLoader(/\.(less)$/, 'less-loader', [files.viewPath]);
-    Loader(/\.(css|pcss)$/, false, [files.cssPath]);
-    Loader(/\.(sass|scss)$/, 'sass-loader', [files.cssPath]);
-    Loader(/\.(less)$/, 'less-loader', [files.cssPath]);
-  } else {
-
-    Loader(/\.(css|pcss)$/, false);
-    Loader(/\.(sass|scss)$/, 'sass-loader');
-    Loader(/\.(less)$/, 'less-loader');
-
-  }
+  cssLoader(/\.(css|pcss)$/, false);
+  cssLoader(/\.(sass|scss)$/, 'sass-loader');
+  cssLoader(/\.(less)$/, 'less-loader');
 
   return Config;
 };

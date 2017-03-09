@@ -17,8 +17,6 @@ function cHappypack(id, loaders) {
   })
 }
 
-let vendorsJson = files.dllPath + '/vendors.json';
-
 module.exports = [
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.DefinePlugin({
@@ -29,7 +27,6 @@ module.exports = [
   new webpack.LoaderOptionsPlugin({
     minimize: true,
     options: {
-      context: files.appPath,
       postcss: base.cssType === 'pcss' ? [
           require("postcss-cssnext")(({
             features: {
@@ -43,16 +40,9 @@ module.exports = [
     }
   }),
   cHappypack('HTML', ['html-loader']),
-  cHappypack('IMAGE', [
-    {
-      loader: 'url-loader',
-      query: {
-        limit: 2000,
-        name: 'assets/[name]-[hash:8].[ext]'
-      }
-    }
-  ]),
+
   cHappypack('ES3', ['es3ify-loader']),
+
   cHappypack('JSX', [{
     loader: 'babel-loader',
     query: require('./babel')

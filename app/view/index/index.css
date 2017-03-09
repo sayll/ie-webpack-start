@@ -1,11 +1,11 @@
 body {
-  background: #1ba9ba;
+  background: url("../../source/img/avatar.jpg") no-repeat;
 }
 
 #content {
-  padding: 5rem;
+  padding: 5rem 20rem;
 }
 
-.ms-controller{
+.ms-controller {
   visibility: hidden
 }
