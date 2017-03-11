@@ -52,9 +52,9 @@
 2. 自动引入页面的CSS和JS文件。无需手动设置URL。(所有文件hash的改变都会导致文件名改变,这里的资源引用全由内部自动完成)
 
 ### 关于【CSS】
-1. css的模块化，预处理器的编译。（[支持`sass,scss,less,postcss`](# 高级)）
+1. css的模块化，预处理器的编译。（[支持`sass,scss,less,postcss`](#使用CSS预处理器)）
 2. 针对低版本浏览器和其他浏览器内核的特殊性，启用[autoprefixer](https://github.com/postcss/autoprefixer)自动添加浏览器前缀
-3. 可导入字体和字体图标，操作非常简单。（如[阿里系icon](http://www.iconfont.cn/)）【[配置文档](# 高级)】
+3. 可导入字体和字体图标，操作非常简单。（如[阿里系icon](http://www.iconfont.cn/)）【[配置文档](#高级)】
 4. 防缓存的hash规则
 
 ### 关于【JS】
@@ -78,7 +78,7 @@
 │   ├    ├── css
 │   ├    ├── js
 │   ├    ├── font
-│   ├    └──  img             
+│   ├    └── img             
 │   ├── static               # 公共的静态资源文件(所有内部文件通过index.js引入，可配置全局变量。)
 │   └── view                 # 主路由和异步分割点
 │       └── index            # 匹配html文件夹中的index.html。（css,js文件名对应文件夹名，可直接打包无需单独引入）
@@ -107,6 +107,7 @@ $ cd ie-webpack-start
 $ npm run cnpm
 ```
 以后请使用`cnpm`替代`npm`操作
+
 2. 下载依赖
 * 请确保你的环境配置完成，然后就可以开始以下步骤
   * `npm` 用户：
@@ -128,7 +129,7 @@ $ npm run cnpm
 
 ### 命令说明
 
-开发过程中，你用得最多的会是`npm run dev`，但是这里还有很多其它的处理：
+开发过程中，你用得最多的会是`npm start`，但是这里还有很多其它的处理：
 
 |`npm run <script>`|解释|
 |------------------|-----------|
@@ -220,7 +221,7 @@ $ npm run cnpm
       * 文件地址：[app/source/js/main.js](/app/source/font/icon)
     ```js
     module.exports = {
-      mainJS  : false, // 添加公共main.js
+      mainJS  : true, // 添加公共main.js
       devHost : '0.0.0.0',
       devPort : '3000',
       viewType: 'html', // pug,jade,html...
