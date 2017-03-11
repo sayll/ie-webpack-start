@@ -1,11 +1,13 @@
-let base = require('../base/base');
+const base = require('../base/base');
 
 module.exports = ((entry) => {
   let All = {};
 
   if (base.mainJS) {
-    const path  = require('path'),
-          files = require('../base/files');
+    const path = require('path');
+
+    const files = require('../base/files');
+
     All = Object.assign(entry, {
       'Main': [path.resolve(files.jsPath, 'main.js')]
     });
