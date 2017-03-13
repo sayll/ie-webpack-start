@@ -25,6 +25,7 @@
 * 引入库，但无法全局调用。
   1. 请在`app/static/index.js`中配置
     * 如`Jquery`
+    
       ``` js
       window.$ = require('./tools/jquery.min');
       ```
