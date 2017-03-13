@@ -4,6 +4,13 @@
 <b>IE 9+ 用户请转至：[avalon-webpack-start](https://github.com/sayll/avalon-webpack-start)</b>
 
 <b>React 用户请转至：[react-webpack-start](https://github.com/sayll/react-webpack-start)</b>
+## 重要
+
+<b>由于webpack不支持低版本IE下启动服务实时测试，必须通过打包才知道测试结果。</b> </br>
+所以请用户自行在其他浏览器编写测试，最后回跑测试打包的IE</br>
+代码压缩导致无法兼容低版本IE,故取消代码压缩功能。</br>
+如有使用如Jquery第三方库的同学，最好自行引用它的min版本，而不是通过打包形式。（否则：反而使包变大）</br>
+本项目只是为用户提供使用ES6新特性的可能，和简单方便的管理资源。其他扩展功能不在本项目的范围内。</br>
 
 ## 目录简介
 1. [介绍](#介绍) 
@@ -29,12 +36,7 @@
 
 ## 介绍
 这个一个以webpack2为基础，启用tree-shaking新技术,为打包支持到低版本的`webpack2`实验性脚手架。</br>
-本项目使用[`avalon2`](https://github.com/RubyLouvre/avalon)作为演示框架。
-
-下面是非常！非常！！非常！！！重要的事情！！！</br>
-此项目无法在低版本IE下启动服务实时测试，必须通过打包才知道测试结果。</br>
-所以请用户自行在其他浏览器编写测试，最后回跑测试打包的IE</br>
-由于代码压缩导致无法在IE下正常运行，本版本取消代码压缩功能。如有使用如Jquery第三方库的同学，最好自行引用它的min版本，而不是通过打包形式。
+本项目使用[`avalon2`](https://github.com/RubyLouvre/avalon)作为演示框架。</br>
 
 ### 关于【Webpack】
 1. 服务端使用Express。需要注意的是，只有一个目的那就是提供了`webpack-dev-middleware` 和 `webpack-hot-middleware`（代码热替换）。使用自定义的Express程序替换[webpack-dev-server](https://github.com/webpack/webpack-dev-server)，让它更容易实现universal 渲染和为了不使这个包过于庞大。
