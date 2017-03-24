@@ -1,7 +1,5 @@
 const babel = {
 
-  cacheDirectory: true,
-
   'presets': [
     [
       "es2015",

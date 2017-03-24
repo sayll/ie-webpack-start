@@ -1,14 +1,1 @@
-alert($('div')[0]);
-
-let img = require('../../source/img/avatar.jpg');
-console.log(img);
-
-let vm = avalon.define({
-  $id: "test",
-  name: "司徒正美",
-  array: [11, 22, 33]
-});
-
-setTimeout(function () {
-  vm.array.set(0, 444)
-}, 3000);
+alert($('div')[0]);let img = require('../../source/img/avatar.jpg');console.log(img);require.ensure([], function() {  var foo = require("../../../package.json");  console.log(foo);}, "custom-chunk-name");let vm = avalon.define({  $id: "test",  name: "司徒正美",  array: [11, 22, 33]});setTimeout(function () {  vm.array.set(0, 444)}, 3000);
