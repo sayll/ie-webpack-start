@@ -40,7 +40,7 @@ module.exports = (dev) => {
             loader: 'url-loader',
             query: {
               limit: 2000,
-              publicPath: '../../',
+              publicPath: '/',
               name: 'assets/[name]-[hash:8].[ext]'
             }
           }
@@ -55,7 +55,7 @@ module.exports = (dev) => {
             loader: 'url-loader',
             query: {
               limit: 1,
-              publicPath: '../../',
+              publicPath: '/',
               name: 'assets/[name]-[hash:8].[ext]'
             }
           }
