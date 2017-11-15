@@ -19,7 +19,7 @@ ratings:
   paths:
   - app/**/*
 exclude_paths:
-  - app/static/tools/**/*
+  - app/utils/tools/**/*
   - app/source/font/**/*
   - app/source/css/library/**/*
   - app/source/css/parts/**/*

@@ -16,7 +16,7 @@ module.exports = ((entry) => {
   return base.mainJS ? All : entry;
 })({
   'Common': [
-    'lib',
+    'utils',
     'css',
   ]
 });

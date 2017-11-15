@@ -22,8 +22,11 @@ if (process.env.NODE_ENV === 'development') {
   }));
   
   app.use(require('webpack-hot-middleware')(compiler));
-  
-  app.use('/', express.static(files.buildPath));
+	
+	app.use('/', express.static(files.buildPath));
+	
+	app.use('/', express.static(files.staticPath));
+
   app.listen(base.devPort, () => {
     console.log(`open localhost:${base.devPort}`);
   });

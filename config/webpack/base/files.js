@@ -13,7 +13,7 @@ module.exports = ((filesName) => {
   files.viewPath = path.resolve(appPath, files.viewName);
   files.testPath = path.resolve(appPath, files.testName);
   files.htmlPath = path.resolve(appPath, files.htmlName);
-  files.staticPath = path.resolve(appPath, files.staticName);
+  files.staticPath = path.resolve(files.root, 'static');
   files.componentPath = path.resolve(appPath, files.componentName);
   return files;
 })({

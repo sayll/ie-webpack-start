@@ -26,6 +26,7 @@
     * [基本](#基本)
       * [创建HTML视图](#创建视图)
       * [配置JS,CSS资源文件](#配置资源文件)
+      * [静态资源](#静态资源)
     * [高级](#高级)
       * [使用框架(avalon2)或库(jquery)](#使用框架)
       * [引用字体图标Icon](#配置Icon)
@@ -74,6 +75,8 @@
 │   └── karma.conf.js        # karma配置文件
 ├── server                   # Express 程序 (使用 webpack 中间件)
 │   └── main.js              # 服务端程序入口文件
+├── static                   # 静态资源文件夹，将它视为项目根使用
+|
 ├── app                      # 程序源文件
 │   ├── html                 # 多页或单页应用的入口HTML
 │   └──  source               # 公共的资源文件
@@ -81,7 +84,7 @@
 │   ├    ├── js
 │   ├    ├── font
 │   ├    └── img             
-│   ├── static               # 公共的静态资源文件(所有内部文件通过index.js引入，可配置全局变量。)
+│   ├── utils                # 辅助资源(所有内部文件通过index.js引入，可配置全局变量。)
 │   └── view                 # 主路由和异步分割点
 │       └── index            # 匹配html文件夹中的index.html。（css,js文件名对应文件夹名，可直接打包无需单独引入）
 │           ├── index.js     # 直接与index.html匹配的入口文件，可以作为单页应用的入口，在内部定义自己的项目目录
@@ -152,7 +155,7 @@ $ npm run cnpm
 
 1. <a name='创建视图'>创建HTML视图</a>,文件地址：[`app/html`](/app/html)
     * 创建单页应用，只需一个入口文件`index.html`即可。
-3. <a name='配置资源文件'>配置JS,CSS资源文件</a>，文件地址：[`app/view`](/app/view)
+2. <a name='配置资源文件'>配置JS,CSS资源文件</a>，文件地址：[`app/view`](/app/view)
 
     一. 创建html文件`app/html/demo.html`时，配置view中的资源文件：
     
@@ -169,6 +172,9 @@ $ npm run cnpm
     * `app/view/index/index.js`
     * `app/view/index/index.css`
     * 在`app/view/index`中管理其他资源文件，通过唯一的文件入口`index.js`来引入其他资源文件
+3. <a name='静态资源'>静态资源</a>
+     1. 如需直接引用静态资源文件，可在static文件夹中添加文件，将static视为项目根文件。
+        * 如引用`ico`,通过 `<link type="image/x-icon" href="logo.ico" rel="shortcut icon"/>`即可
 
 ### 高级
 
@@ -178,7 +184,7 @@ $ npm run cnpm
   $ npm install avalon2
   ```
   
-  * 配置全局调用变量，地址：[`app/static/index.js`](/app/static/index.js)
+  * 配置全局调用变量，地址：[`app/utils/index.js`](/app/utils/index.js)
   ```js
   // 由于avalon2内部自己解决绑定window对象，所以无需其他处理，直接引入即可。
   window.$ = require('./tools/jquery.min');

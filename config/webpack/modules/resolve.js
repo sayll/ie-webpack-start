@@ -3,7 +3,8 @@ const base  = require('../base/base'),
       path  = require('path');
 module.exports = {
   alias     : {
-    'lib': path.resolve(files.staticPath, 'index.js'),
+		'static': path.resolve(files.staticPath),
+    'utils': path.resolve(files.appPath, 'utils/index.js'),
     'css': path.resolve(files.cssPath, 'index.' + base.cssType)
   },
   modules   : ['node_modules'],
