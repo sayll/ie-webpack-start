@@ -218,7 +218,7 @@ $ npm run cnpm
         ```bash
         $ npm install sass-loader node-sass       # npm用户(由于墙的原因会有很大一部分人会失败，推荐使用cnpm)
         $ cnpm install sass-loader node-sass      # cnpm用户
-        $ yarn install sass-loader node-sass      # yarn用户
+        $ yarn add sass-loader node-sass      # yarn用户
         ```
         
       * 样式文件后缀需要与`cssType`对应;
